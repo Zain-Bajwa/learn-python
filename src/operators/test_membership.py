@@ -11,6 +11,8 @@ def test_membership_operators():
 
     # Let's use the following fruit list to illustrate membership concept.
     fruit_list = ["apple", "banana"]
+    
+
 
     # in
     # Returns True if a sequence with the specified value is present in the object.
@@ -23,3 +25,15 @@ def test_membership_operators():
 
     # Returns True because a sequence with the value "pineapple" is not in the list.
     assert "pineapple" not in fruit_list
+
+    # Member of a tuple
+    number_tuple = (1, 3, 4, 5, 10)
+    assert 5 in number_tuple
+
+    # member of a string
+    message = "Hello World"
+    assert 'Hello' in message
+    assert ' ' in message
+
+
+test_membership_operators()

@@ -21,6 +21,43 @@ to the dictionary; this is also the way dictionaries are written on output.
 """
 
 
+def test_dic_comprehension():
+    # map list into dictionary as square of numbers
+    numbers = [1, 2, 3, 4, 5, 6]
+    square_dict = dict()
+    for i in numbers:
+        square_dict[i] = i ** 2
+    print(square_dict)
+    # now with dict compression
+    new_dict = {i: i ** 2 for i in numbers}
+    print(new_dict)
+
+
+def test_dic_comprehension1():
+    # Lets we have a dictionary of items with price
+    old_price = {"milk": 1.5, "coffee": 2.05, "bread": 3.0}
+
+    # Increase 50% price if the price is greater than 2 other vise price will be same
+    new_price = {key: value * 1.5 if value > 2.0 else value for key, value in old_price.items()}
+    print(new_price)
+
+
+def test_dic_function():
+    dic = {'a': 4098, 'd': 4139}
+    dic['c'] = 4050
+    assert dic == {'a': 4098, 'd': 4139, 'c': 4050}
+
+    del dic['d']
+    dic['b'] = 4127
+    assert dic == {'a': 4098, 'b': 4127, 'c': 4050}
+    assert list(dic) == ['a', 'c', 'b']
+    assert sorted(dic) == ['a', 'b', 'c']
+    assert list(dic.values()) == [4098, 4050, 4127]
+    assert sorted(dic.values()) == [4050, 4098, 4127]
+    assert 'a' in dic
+    assert 'Ali' not in dic
+
+
 def test_dictionary():
     """Dictionary"""
 
@@ -77,3 +114,10 @@ def test_dictionary():
     assert dictionary_for_string_keys['sape'] == 4139
     assert dictionary_for_string_keys['guido'] == 4127
     assert dictionary_for_string_keys['jack'] == 4098
+
+
+test_dic_comprehension()
+
+test_dic_comprehension1()
+
+test_dic_function()

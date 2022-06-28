@@ -5,7 +5,8 @@
 Identity operators are used to compare the objects, not if they are equal, but if they are actually
 the same object, with the same memory location.
 """
-
+import copy
+import pytest
 
 def test_identity_operators():
     """Identity operators"""
@@ -21,6 +22,18 @@ def test_identity_operators():
     # Example:
     # first_fruits_list and third_fruits_list are the same objects.
     assert first_fruits_list is third_fruits_list
+    assert first_fruits_list == third_fruits_list
+
+    third_fruits_list[0] = "Mango"
+
+    assert first_fruits_list is third_fruits_list
+    assert first_fruits_list == third_fruits_list
+
+    third_fruits_list = copy.deepcopy(first_fruits_list)
+    third_fruits_list[0] = "Mango"
+
+    assert first_fruits_list is not third_fruits_list
+    assert first_fruits_list == third_fruits_list
 
     # is not
     # Returns true if both variables are not the same object.
@@ -32,4 +45,11 @@ def test_identity_operators():
 
     # To demonstrate the difference between "is" and "==": this comparison returns True because
     # first_fruits_list is equal to second_fruits_list.
-    assert first_fruits_list == second_fruits_list
+    
+    with pytest.raises(Exception):
+        assert first_fruits_list == second_fruits_list
+    
+    assert first_fruits_list != second_fruits_list
+
+
+test_identity_operators()

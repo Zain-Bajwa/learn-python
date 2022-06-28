@@ -11,6 +11,7 @@ There are three numeric types in Python:
 """
 
 
+
 def test_integer_numbers():
     """Integer type
 
@@ -25,6 +26,7 @@ def test_integer_numbers():
     assert isinstance(positive_integer, int)
     assert isinstance(negative_integer, int)
     assert isinstance(big_integer, int)
+    assert type(positive_integer) == int
 
 
 def test_booleans():
@@ -49,6 +51,14 @@ def test_booleans():
     # Let's try to cast boolean to string.
     assert str(true_boolean) == "True"
     assert str(false_boolean) == "False"
+
+    # Check with 1 and 0
+    assert true_boolean == 1
+    assert false_boolean == 0
+
+    # Check directly with True and False
+    assert true_boolean == True
+    assert false_boolean == False
 
 
 def test_float_numbers():
@@ -78,6 +88,14 @@ def test_float_numbers():
     assert isinstance(12E4, float)
     assert isinstance(-87.7e100, float)
 
+    # Check datatype of variables
+    assert isinstance(float_with_small_e, float)
+    assert float_with_big_e == 12E4
+
+    float_with_small_negative_e = 123e-2
+
+    assert float_with_small_negative_e == 1.23
+
 
 def test_complex_numbers():
     """Complex Type"""
@@ -87,7 +105,10 @@ def test_complex_numbers():
 
     assert isinstance(complex_number_1, complex)
     assert isinstance(complex_number_2, complex)
+    
+    # Arithmetic operations on complex numbers
     assert complex_number_1 * complex_number_2 == 27 + 8j
+    assert complex_number_1 + complex_number_2 == 8 + 4j
 
 
 def test_number_operators():
@@ -118,3 +139,14 @@ def test_number_operators():
     # There is full support for floating point; operators with
     # mixed type operands convert the integer operand to floating point.
     assert 4 * 3.75 - 1 == 14.0
+
+
+test_integer_numbers()
+
+test_booleans()
+
+test_float_numbers()
+
+test_complex_numbers()
+
+test_number_operators()

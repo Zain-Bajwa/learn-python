@@ -22,6 +22,7 @@ def test_tuples():
     assert fruits_tuple[0] == "apple"
     assert fruits_tuple[1] == "banana"
     assert fruits_tuple[2] == "cherry"
+    assert fruits_tuple == ("apple", "banana", "cherry")
 
     # You cannot change values in a tuple.
     with pytest.raises(Exception):
@@ -33,8 +34,13 @@ def test_tuples():
     # The len() function returns the length of the tuple.
     fruits_tuple_via_constructor = tuple(("apple", "banana", "cherry"))
 
+
     assert isinstance(fruits_tuple_via_constructor, tuple)
     assert len(fruits_tuple_via_constructor) == 3
+
+    # Creation with list
+    fruits_tuple_via_constructor = tuple(["apple", "banana", "cherry"])
+    assert isinstance(fruits_tuple_via_constructor, tuple)
 
     # It is also possible to omit brackets when initializing tuples.
     another_tuple = 12345, 54321, 'hello!'
@@ -43,6 +49,11 @@ def test_tuples():
     # Tuples may be nested:
     nested_tuple = another_tuple, (1, 2, 3, 4, 5)
     assert nested_tuple == ((12345, 54321, 'hello!'), (1, 2, 3, 4, 5))
+
+    # Tuple of lists
+    tuple_of_list = ([1, 2, 3], ['a', 'b', 'c'])
+    assert tuple_of_list[0] == [1, 2, 3]
+    assert tuple_of_list[1][0] == 'a'
 
     # As you see, on output tuples are always enclosed in parentheses, so that nested tuples are
     # interpreted correctly; they may be input with or without surrounding parentheses, although
@@ -86,3 +97,6 @@ def test_tuples():
 
     assert first_number == 456
     assert second_number == 123
+
+
+test_tuples()

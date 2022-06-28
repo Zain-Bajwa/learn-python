@@ -19,6 +19,8 @@ whole number)
 literals and float literals
 """
 
+import pytest
+
 
 def test_type_casting_to_integer():
     """Type casting to integer"""
@@ -26,12 +28,16 @@ def test_type_casting_to_integer():
     assert int(1) == 1
     assert int(2.8) == 2
     assert int('3') == 3
+    with pytest.raises(Exception):
+        assert int('a') == 97  # ValueError: invalid literal for int() with base 10: 'a'
 
 
 def test_type_casting_to_float():
     """Type casting to float"""
 
     assert float(1) == 1.0
+    assert float(2) == 2
+    assert float('2') == 2.0
     assert float(2.8) == 2.8
     assert float("3") == 3.0
     assert float("4.2") == 4.2
@@ -43,3 +49,11 @@ def test_type_casting_to_string():
     assert str("s1") == 's1'
     assert str(2) == '2'
     assert str(3.0) == '3.0'
+    assert str(5.0) == "5.0"
+
+
+test_type_casting_to_integer()
+
+test_type_casting_to_float()
+
+test_type_casting_to_string()

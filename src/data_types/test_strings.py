@@ -111,7 +111,8 @@ def test_string_type():
         First line
         Second line
     '''
-
+    
+    print(multi_line_string)
     assert multi_line_string == '''\
         First line
         Second line
@@ -127,8 +128,15 @@ def test_string_operators():
 
     assert 3 * 'un' + 'ium' == 'unununium'
 
+    # Error
+    # assert 3 - 'un' + 'ium' == 'unununium'
+
     # 'Py' 'thon'
     python = 'Py' 'thon'
+    assert python == 'Python'
+
+    # with +
+    python = 'Py' + 'thon'
     assert python == 'Python'
 
     # This feature is particularly useful when you want to break long strings:
@@ -138,9 +146,16 @@ def test_string_operators():
     )
     assert text == 'Put several strings within parentheses to have them joined together.'
 
+    text = 'Put several strings within parentheses '\
+        'to have them joined together.'
+    assert text == 'Put several strings within parentheses to have them joined together.'
+
     # If you want to concatenate variables or a variable and a literal, use +:
     prefix = 'Py'
     assert prefix + 'thon' == 'Python'
+
+    postfix = 'thon'
+    assert 'Py' + postfix == 'Python'
 
 
 def test_string_methods():
@@ -151,6 +166,10 @@ def test_string_methods():
     # The strip() method removes any whitespace from the beginning or the end.
     string_with_whitespaces = " Hello, World! "
     assert string_with_whitespaces.strip() == "Hello, World!"
+
+    string_with_whitespaces = " Hello,  World! "
+    print(string_with_whitespaces.strip())
+    assert string_with_whitespaces.strip() != "Hello, World!"
 
     # The len() method returns the length of a string.
     assert len(hello_world_string) == 13
@@ -163,21 +182,26 @@ def test_string_methods():
 
     # The replace() method replaces a string with another string.
     assert hello_world_string.replace('H', 'J') == 'Jello, World!'
+    assert hello_world_string.replace('h', 'J') == 'Hello, World!'
 
     # The split() method splits the string into substrings if it finds instances of the separator.
     assert hello_world_string.split(',') == ['Hello', ' World!']
 
     # Converts the first character to upper case
     assert 'low letter at the beginning'.capitalize() == 'Low letter at the beginning'
+    print('1 low letter at the beginning'.capitalize())
 
     # Returns the number of times a specified value occurs in a string.
     assert 'low letter at the beginning'.count('t') == 4
+    assert 'low letter at the beginning'.count(' ') == 4
 
     # Searches the string for a specified value and returns the position of where it was found.
     assert 'Hello, welcome to my world'.find('welcome') == 7
+    assert 'Hello, welcome to my world'.find('w') == 7
 
     # Converts the first character of each word to upper case
     assert 'Welcome to my world'.title() == 'Welcome To My World'
+    assert 'Welcome to my _world'.title() == 'Welcome To My _World'
 
     # Returns a string where a specified value is replaced with a specified value.
     assert 'I like bananas'.replace('bananas', 'apples') == 'I like apples'
@@ -185,6 +209,7 @@ def test_string_methods():
     # Joins the elements of an iterable to the end of the string.
     my_tuple = ('John', 'Peter', 'Vicky')
     assert ', '.join(my_tuple) == 'John, Peter, Vicky'
+    assert 'Ali, ' + ', '.join(my_tuple) == 'Ali, John, Peter, Vicky'
 
     # Returns True if all characters in the string are upper case.
     assert 'ABC'.isupper()
@@ -213,6 +238,7 @@ def test_string_formatting():
     event = 'conference'
 
     assert f'Results of the {year} {event}' == 'Results of the 2018 conference'
+    print('Results of the ' + str(year) + ' ' + event)
 
     # The str.format() method of strings requires more manual effort. You’ll still use { and } to
     # mark where a variable will be substituted and can provide detailed formatting directives,
@@ -222,6 +248,7 @@ def test_string_formatting():
     percentage = yes_votes / (yes_votes + no_votes)
 
     assert '{:-9} YES votes  {:2.2%}'.format(yes_votes, percentage) == ' 42572654 YES votes  49.67%'
+    print('{:+15} YES votes  {:2.3%}'.format(yes_votes, percentage))
 
     # When you don’t need fancy output but just want a quick display of some variables for debugging
     # purposes, you can convert any value to a string with the repr() or str() functions. The str()
@@ -241,6 +268,7 @@ def test_string_formatting():
     assert repr(greeting) == "'Hello, world.'"
     assert str(1/7) == '0.14285714285714285'
 
+    print(repr(greeting))
     # The argument to repr() may be any Python object:
     assert repr((first_num, second_num, ('spam', 'eggs'))) == "(32.5, 40000, ('spam', 'eggs'))"
 
@@ -265,7 +293,8 @@ def test_string_formatting():
     assert table_string == ('Sjoerd ==>   4127'
                             'Jack   ==>   4098'
                             'Dcab   ==>   7678')
-
+    
+    print(table_string)
     # The String format() Method
 
     # Basic usage of the str.format() method looks like this:
@@ -308,3 +337,12 @@ def test_string_formatting():
     formatted_string = 'Jack: {Jack:d}; Sjoerd: {Sjoerd:d}; Dcab: {Dcab:d}'.format(**table)
 
     assert formatted_string == 'Jack: 4098; Sjoerd: 4127; Dcab: 8637678'
+
+
+test_string_type()
+
+test_string_operators()
+
+test_string_methods()
+
+test_string_formatting()

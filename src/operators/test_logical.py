@@ -26,3 +26,9 @@ def test_logical_operators():
     # pylint: disable=unneeded-not
     assert not first_number == second_number
     assert first_number != second_number
+    
+    bool_number = True
+    assert not bool_number == False
+    assert not first_number == False
+
+test_logical_operators()
