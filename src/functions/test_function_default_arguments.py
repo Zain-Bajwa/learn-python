@@ -24,3 +24,9 @@ def test_default_function_arguments():
     # We may also want to override the second argument by using the following function calls.
     assert power_of(3, 2) == 9
     assert power_of(3, 3) == 27
+
+    assert power_of(3, 0) == 1
+    assert power_of(3, 1) == 3
+
+
+test_default_function_arguments()

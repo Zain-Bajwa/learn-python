@@ -29,3 +29,6 @@ def test_while_statement():
 
     # 2^5 = 32
     assert result == 32
+
+
+test_while_statement()

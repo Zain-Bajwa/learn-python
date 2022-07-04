@@ -33,14 +33,27 @@ def test_class_definition():
             """Class method."""
             return 'Goodbye ' + self.name
 
+        def say_hello_to_user(self, name):
+            """Class method."""
+            return 'Hello ' + name
+
+        def welcome_to_user(self, name):
+            """Class method."""
+            return self.say_hello_to_user(name) + " Welcome to the Classes"
+
     # When a class definition is entered, a new namespace is created, and used as the local scope —
     # thus, all assignments to local variables go into this new namespace. In particular, function
     # definitions bind the name of the new function here.
 
     # Class instantiation uses function notation. Just pretend that the class object is a
     # parameterless function that returns a new instance of the class. For example the following
-    # code will creates a new instance of the class and assigns this object to the local variable.
+    # code will create a new instance of the class and assigns this object to the local variable.
     greeter = GreetingClass()
 
     assert greeter.say_hello() == 'Hello user'
     assert greeter.say_goodbye() == 'Goodbye user'
+    assert greeter.say_hello_to_user('Zain') == 'Hello Zain'
+    assert greeter.welcome_to_user('Zain') == 'Hello Zain Welcome to the Classes'
+
+
+test_class_definition()

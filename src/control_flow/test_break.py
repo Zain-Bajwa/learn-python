@@ -6,6 +6,10 @@ The break statement, like in C, breaks out of the innermost enclosing "for" or "
 """
 
 
+from distutils.command.build_scripts import first_line_re
+from more_itertools import first
+
+
 def test_break_statement():
     """BREAK statement"""
 
@@ -23,3 +27,15 @@ def test_break_statement():
 
     # We need to make sure that break statement has terminated the loop once it found the number.
     assert number_of_iterations == 42
+
+    # Find first divisor of a number except 1
+    number = 25
+    first_divisible = 0
+    for n in range(2, number+1):
+        if number % n == 0:
+            first_divisible = n
+            break
+    assert first_divisible == 5
+        
+
+test_break_statement()

@@ -66,6 +66,22 @@ def test_for_statement():
 
     assert concatenated_string == 'Mary had a little lamb '
 
+    # use of range() function
+    for i in range(5):
+        print(i)
+    for i in range(5, 9):
+        print(i)
+
+    print(concatenated_string)
+
+    # Or simply use list name.
+    concatenated_string = ''
+
+    for word in words:
+        concatenated_string += word + ' '
+
+    assert concatenated_string == 'Mary had a little lamb '
+
     # When looping through dictionaries, the key and corresponding value can be retrieved at the
     # same time using the items() method.
     knights_names = []
@@ -105,6 +121,15 @@ def test_for_statement():
         'What is your favorite color?  It is blue.',
     ]
 
+    # if range of sequence is not same.
+    questions = ['name', 'quest', 'favorite color']
+    answers = ['lancelot', 'the holy grail']
+    combinations = []
+
+    for question, answer in zip(questions, answers):
+        combinations.append('What is your {0}?  It is {1}.'.format(question, answer))
+    print(combinations)
+
 
 def test_range_function():
     """Range function
@@ -132,3 +157,10 @@ def test_range_function():
     assert list(range(5, 10)) == [5, 6, 7, 8, 9]
     assert list(range(0, 10, 3)) == [0, 3, 6, 9]
     assert list(range(-10, -100, -30)) == [-10, -40, -70]
+    assert list(range(1, 9, 2)) == [1, 3, 5, 7]
+    assert list(range(10, 2)) == [10, 9, 8, 7, 6, 5, 4, 3]
+
+
+test_for_statement()
+
+test_range_function()

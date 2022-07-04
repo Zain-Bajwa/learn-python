@@ -64,3 +64,6 @@ def test_try():
         message += 'The "try except" is finished.'
 
     assert message == 'Something went wrong.The "try except" is finished.'
+
+
+test_try()

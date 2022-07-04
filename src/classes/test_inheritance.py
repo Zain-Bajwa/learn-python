@@ -47,6 +47,20 @@ class Employee(Person):
         """Get full employee id"""
         return self.get_name() + ', ' + self.staff_id
 
+class Teacher(Employee):
+    """Example of multilevel inheritance
+
+    This class is drived from Employee class. This class can hold all data members and functions
+    of both classes Person and Employee.
+    """
+    def __init__(self, name, staff_id, designation):
+        Employee.__init__(self, name, staff_id)
+        self.designation = designation
+
+    def get_detail(self):
+        """Get full detail of a person"""
+        return self.get_full_id() + ', ' + self.designation
+
 
 def test_inheritance():
     """Inheritance."""
@@ -61,6 +75,9 @@ def test_inheritance():
     assert person.get_name() == 'Bill'
     assert employee.get_name() == 'John'
     assert employee.get_full_id() == 'John, A23'
+
+    teacher = Teacher('Zain', '19i-1288', 'Lab Instructor')
+    assert teacher.get_detail() == 'Zain, 19i-1288, Lab Instructor'
 
     # Python has two built-in functions that work with inheritance:
     #
@@ -79,3 +96,9 @@ def test_inheritance():
 
     assert issubclass(Employee, Person)
     assert not issubclass(Person, Employee)
+
+    assert isinstance(teacher, Teacher)
+    assert type(teacher) == Teacher
+
+
+test_inheritance()

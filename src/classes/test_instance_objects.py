@@ -28,3 +28,16 @@ def test_instance_objects():
     dummy_instance.temporary_attribute = 1
     assert dummy_instance.temporary_attribute == 1
     del dummy_instance.temporary_attribute
+
+    class A:
+        """Actal class"""
+        def __init__(self):
+            self.name = ''
+    
+    actual_instance = A()
+    actual_instance.temporary_attribute = 10
+    assert actual_instance.temporary_attribute == 10
+    del actual_instance.temporary_attribute
+
+
+test_instance_objects()

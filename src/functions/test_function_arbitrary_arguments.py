@@ -19,6 +19,7 @@ def test_function_arbitrary_arguments():
         """This function accepts its arguments through "arguments" tuple"""
         assert first_param == 'first param'
         assert arguments == ('second param', 'third param')
+        assert arguments[0] == "second param"
 
     test_function('first param', 'second param', 'third param')
 
@@ -31,3 +32,7 @@ def test_function_arbitrary_arguments():
 
     assert concat('earth', 'mars', 'venus') == 'earth/mars/venus'
     assert concat('earth', 'mars', 'venus', sep='.') == 'earth.mars.venus'
+    assert concat('earth', 'mars', 'venus', sep=' ') == 'earth mars venus'
+
+
+test_function_arbitrary_arguments()

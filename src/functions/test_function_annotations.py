@@ -25,3 +25,21 @@ def test_function_annotations():
     """Function Annotations."""
 
     assert breakfast.__annotations__ == {'eggs': str, 'ham': str, 'return': str}
+
+
+def foo(a: int, b: 'annotating b', c: int) -> float:
+    return a + b + c
+
+
+assert foo('Hello', ', ', 'World!') == 'Hello, World!'
+assert foo(1, 2, 3) == 6
+
+
+def fun(a, b: 'annotating b', c: int) -> float:
+    print(a + b + c)
+
+
+print(fun.__annotations__)
+
+
+test_function_annotations()

@@ -67,6 +67,11 @@ def test_function_scopes():
         # pylint: disable=redefined-outer-name,global-statement
         global test_variable
         test_variable = 'global value'
+
+        def global_in_global():
+            assert test_variable == 'global value'
+
+        global_in_global()
         return test_variable
 
     # On this level currently we have access to local for test_function_scopes() function variable.
@@ -105,3 +110,9 @@ def test_global_variable_access():
     # it was changed by "someone" and you need to know about the CONTEXT of who had changed that.
     # So once again access global and non local scope only if you know what you're doing otherwise
     # it might be considered as bad practice.
+
+
+test_function_scopes()
+assert test_variable == 'global value'
+
+test_global_variable_access()
