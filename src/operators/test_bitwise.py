@@ -57,4 +57,5 @@ def test_bitwise_operators():
     assert 5 << 1 == 10  # 0b1010
     assert 5 << 2 == 20  # 0b10100
 
+
 test_bitwise_operators()
