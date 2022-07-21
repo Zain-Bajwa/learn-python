@@ -16,6 +16,7 @@ def test_bitwise_operators():
     # 5 = 0b0101
     # 3 = 0b0011
     assert 5 & 3 == 1  # 0b0001
+    assert 5 & -3 == 5  #0b0101
 
     # OR
     # Sets each bit to 1 if one of two bits is 1.
@@ -24,6 +25,7 @@ def test_bitwise_operators():
     # 5 = 0b0101
     # 3 = 0b0011
     assert 5 | 3 == 7  # 0b0111
+    assert 5 | -3 == -3  # -0b0011
 
     # NOT
     # Inverts all the bits.
@@ -47,6 +49,7 @@ def test_bitwise_operators():
     # 5 = 0b0101
     assert 5 >> 1 == 2  # 0b0010
     assert 5 >> 2 == 1  # 0b0001
+    assert 80 >> 3 == 10  # 0b1010
 
     # Zero fill left shift
     # Shift left by pushing zeros in from the right and let the leftmost bits fall off.
@@ -55,3 +58,7 @@ def test_bitwise_operators():
     # 5 = 0b0101
     assert 5 << 1 == 10  # 0b1010
     assert 5 << 2 == 20  # 0b10100
+    assert 10 << 3 == 80  # 0b1010000
+
+
+test_bitwise_operators()

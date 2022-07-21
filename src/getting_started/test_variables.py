@@ -30,9 +30,23 @@ def test_variables():
     string_variable = 'John'
 
     assert integer_variable == 5
+    
+    assert integer_variable == 5.0
     assert string_variable == 'John'
 
     variable_with_changed_type = 4  # x is of type int
     variable_with_changed_type = 'Sally'  # x is now of type str
 
     assert variable_with_changed_type == 'Sally'
+
+    float_variable = 3.0
+
+    # Compare with integer
+    assert float_variable == 3
+
+    # Compare with float
+    assert float_variable == float(3)
+    assert float_variable == 3.0
+
+    
+test_variables()

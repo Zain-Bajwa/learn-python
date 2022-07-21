@@ -14,6 +14,37 @@ the same type.
 import pytest
 
 
+def test_simple_list_comprehension():
+    # first five powers of 2
+    numbers = []
+    for i in range(1, 6):
+        numbers.append(2 ** i)
+    assert numbers == [2, 4, 8, 16, 32]
+
+    # We can perform same functionality in following one line. That is list Comprehension
+    new_number = [2 ** i for i in range(1, 6)]
+    assert numbers == [2, 4, 8, 16, 32]
+
+
+def test_simple_list_comprehension_with_if():
+    # square root of even numbers
+    import math
+    numbers = [11, 16, 23, 40, 100]
+
+    new_number = [math.sqrt(i) for i in numbers if i % 2 == 0]
+    assert new_number == [4.0, 6.324555320336759, 10.0]
+
+
+def test_simple_list_comprehension_nested_loop():
+    # map two lists
+    team_1 = ["Ali", "Zain", "Abid"]
+    team_2 = ["Usman", "Farhan", "Adnan"]
+    new_list = [(i, j) for i in team_1 for j in team_2]
+
+    assert new_list == [('Ali', 'Usman'), ('Ali', 'Farhan'), ('Ali', 'Adnan'), ('Zain', 'Usman'), (
+        'Zain', 'Farhan'), ('Zain', 'Adnan'), ('Abid', 'Usman'), ('Abid', 'Farhan'), ('Abid', 'Adnan')]
+
+
 def test_list_type():
     """List type."""
 
@@ -292,6 +323,13 @@ def test_nested_list_comprehensions():
 
     # The following list comprehension will transpose rows and columns:
     transposed_matrix = [[row[i] for row in matrix] for i in range(4)]
+    l = []
+    print([val for row in matrix for val in row])
+    for row in matrix:
+        for val in row:
+            l.append(val)
+
+    assert l == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     assert transposed_matrix == [
         [1, 5, 9],
         [2, 6, 10],
@@ -336,3 +374,20 @@ def test_nested_list_comprehensions():
         (3, 7, 11),
         (4, 8, 12),
     ]
+
+
+test_simple_list_comprehension()
+
+test_simple_list_comprehension_with_if()
+
+test_simple_list_comprehension_nested_loop()
+
+test_list_type()
+
+test_list_methods()
+
+test_del_statement()
+
+test_nested_list_comprehensions()
+
+test_nested_list_comprehensions()

@@ -24,6 +24,38 @@ def test_sets():
     assert isinstance(fruits_set_via_constructor, set)
 
 
+def test_set_basics():
+    basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
+    assert basket == {'orange', 'banana', 'pear', 'apple'}  # show that duplicates have been removed
+    assert 'orange' in basket  # fast membership testing
+
+    assert 'crabgrass' not in basket
+
+    # Demonstrate set operations on unique letters from two words
+
+    a = set('abracadabra')
+    b = set('alacazam')
+    assert a == {'a', 'r', 'b', 'c', 'd'}  # unique letters in a
+
+    assert a - b == {'r', 'd', 'b'}  # letters in a but not in b
+    assert a | b == {'a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'}  # letters in a or b or both
+    assert a & b == {'a', 'c'}  # letters in both a and b
+    assert a ^ b == {'l', 'z', 'r', 'm', 'd', 'b'}  # letters in a or b but not both
+
+
+def test_set_creation():
+    """Sets"""
+    fruits_set = {"apple", "banana", "cherry"}
+
+    assert isinstance(fruits_set, set)
+
+    # It is also possible to use the set() constructor to make a set.
+    # Note the double round-brackets
+    fruits_set_via_constructor = set(("apple", "banana", "cherry"))
+
+    assert isinstance(fruits_set_via_constructor, set)
+
+
 def test_set_methods():
     """Set methods"""
 
@@ -68,3 +100,12 @@ def test_set_methods():
     # Similarly to list comprehensions, set comprehensions are also supported:
     word = {char for char in 'abracadabra' if char not in 'abc'}
     assert word == {'r', 'd'}
+
+
+test_sets()
+
+test_set_basics()
+
+test_set_creation()
+
+test_set_methods()

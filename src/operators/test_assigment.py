@@ -33,10 +33,18 @@ def test_augmented_assignment_operators():
     number += 3
     assert number == 8
 
+    number = 'a'
+    number += 'b'
+    assert number == 'ab'
+
     # Assignment: -=
     number = 5
     number -= 3
     assert number == 2
+
+    number = 3
+    number -= 5
+    assert number == -2
 
     # Assignment: *=
     number = 5
@@ -78,6 +86,10 @@ def test_augmented_assignment_operators():
     number |= 3  # 0b0011
     assert number == 7  # 0b0111
 
+    number = 10  # 0b1010
+    number |= 5  # 0b0101
+    assert number == 15  # 0b1111
+
     # Assignment: ^=
     number = 5  # 0b0101
     number ^= 3  # 0b0011
@@ -87,8 +99,21 @@ def test_augmented_assignment_operators():
     number = 5
     number >>= 3
     assert number == 0  # (((5 // 2) // 2) // 2)
+    
+    number = 11
+    number >>= 3
+    assert number == 1  # (((11 // 2) // 2) // 2)
 
     # Assignment: <<=
+    number = 11
+    number <<= 3
+    assert number == 88  # 11 * 2 * 2 * 2
+
     number = 5
     number <<= 3
     assert number == 40  # 5 * 2 * 2 * 2
+
+
+test_augmented_assignment_operators()
+
+test_assignment_operator()
