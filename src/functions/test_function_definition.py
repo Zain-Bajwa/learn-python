@@ -9,6 +9,7 @@ the next line, and must be indented.
 """
 
 
+global_list = []
 def fibonacci_function_example(number_limit):
     """Generate a Fibonacci series up to number_limit.
 
@@ -121,3 +122,18 @@ def test_function_definition():
     greet_with_closure = compose_greet_func_with_closure('John')
 
     assert greet_with_closure() == 'Hello there, John!'
+
+
+def test_make_list(n):
+    if n==1:
+        global_list.append(n)
+    else:
+        test_make_list(n-1)
+        global_list.append(n)
+
+
+test_make_list(5)
+
+assert global_list == [1, 2, 3, 4, 5]
+
+test_function_definition()

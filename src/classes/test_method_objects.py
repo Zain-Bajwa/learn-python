@@ -7,6 +7,9 @@ by [variable_name].[method_name]([parameters]) as opposed to class data which la
 """
 
 
+from typing import Counter
+
+
 class MyCounter:
     """A simple example of the counter class"""
     counter = 10
@@ -18,6 +21,11 @@ class MyCounter:
     def increment_counter(self):
         """Increment the counter"""
         self.counter += 1
+        return self.counter
+
+    def Decrement_counter(self):
+        """Decrement the counter"""
+        self.counter -= 1
         return self.counter
 
 
@@ -43,6 +51,9 @@ def test_method_objects():
     get_counter = counter.get_counter
     assert get_counter() == 10
 
+    get_counter = counter.get_counter()
+    assert get_counter == 10
+
     # What exactly happens when a method is called? You may have noticed that counter.get_counter()
     # was called without an argument above, even though the function definition for get_counter()
     # specified an argument (self). What happened to the argument? Surely Python raises an
@@ -58,3 +69,18 @@ def test_method_objects():
 
     assert counter.get_counter() == 10
     assert MyCounter.get_counter(counter) == 10
+
+    counter.increment_counter()
+    assert counter.get_counter() == 11
+    
+    # New object
+    counter_1 = MyCounter()
+
+    assert counter_1.get_counter() == 10
+    counter.increment_counter()
+
+    assert counter_1.get_counter() == 10
+    assert counter.get_counter() == 12
+
+
+test_method_objects()

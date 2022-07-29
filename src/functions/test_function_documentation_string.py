@@ -2,7 +2,7 @@
 
 @see: https://docs.python.org/3/tutorial/controlflow.html#documentation-strings
 
-Here are some conventions about the content and formatting of documentation strings.
+Here are some conventions about the content and the formatting of documentation strings.
 
 The first line should always be a short, concise summary of the object’s purpose. For brevity,
 it should not explicitly state the object’s name or type, since these are available by other means
@@ -23,6 +23,21 @@ def do_nothing():
     pass
 
 
+# Only first doc string will be return by __doc__
+def more_than_one_doc_string():
+    """First documentation string"""
+    """Second documentation string"""
+    pass
+
+
+# There should be nothing before Doc string
+def variable_before_doc_string():
+    number = 10
+    """First documentation string"""
+    """Second documentation string"""
+    pass 
+
+
 def test_function_documentation_string():
     """Test documentation string."""
 
@@ -40,3 +55,11 @@ def test_function_documentation_string():
 
     No, really, it doesn't do anything.
     """
+
+    assert more_than_one_doc_string.__doc__ == """First documentation string"""
+
+    # There is variable before doc string
+    assert variable_before_doc_string.__doc__ == None
+
+
+test_function_documentation_string()

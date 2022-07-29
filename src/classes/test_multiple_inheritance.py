@@ -61,8 +61,15 @@ def test_multiple_inheritance():
         that calls each parent only once, and that is monotonic (meaning that a class can be
         subclassed without affecting the precedence order of its parents).
         """
+        def get_date_time(self):
+            return self.get_date() + ' ' + self.get_time()
 
     calendar_clock = CalendarClock()
 
     assert calendar_clock.get_date() == '12/08/2018'
     assert calendar_clock.get_time() == '11:23 PM'
+
+    assert calendar_clock.get_date_time() == '12/08/2018 11:23 PM'
+
+
+test_multiple_inheritance()

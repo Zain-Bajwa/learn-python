@@ -32,3 +32,42 @@ def test_lambda_expressions():
     pairs.sort(key=lambda pair: pair[1])
 
     assert pairs == [(4, 'four'), (1, 'one'), (3, 'three'), (2, 'two')]
+
+
+def test_myfunc(n):
+
+    # Say you have a function definition that takes one argument, and that argument will be
+    # multiplied with an unknown number:
+    return lambda a: a * n
+
+
+def test_lambda_with_map():
+
+    # Program to filter out only the even items from a list
+    my_list = [1, 5, 4, 6, 8, 11, 3, 12]
+
+    new_list = list(filter(lambda x: (x % 2 == 0), my_list))
+    assert new_list == [4, 6, 8, 12]
+
+
+def test_lambda_with_filter():
+    # Program to double each item in a list using map()
+
+    my_list = [1, 5, 4, 6, 8, 11, 3, 12]
+
+    new_list = list(map(lambda x: x * 2, my_list))
+
+    assert new_list == [2, 10, 8, 12, 16, 22, 6, 24]
+
+
+test_lambda_expressions()
+my_doubler = test_myfunc(2)
+my_tripler = test_myfunc(3)
+
+assert my_doubler(11) == 22
+assert my_doubler(15) == 30
+
+assert my_tripler(10) == 30
+
+test_lambda_with_map()
+test_lambda_with_filter()
